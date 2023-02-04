@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VotingApp</title>
+    <style>
+          *{box-sizing:border-box;}
+          html,body{
+            margin: 0;
+            padding: 0;
+            background-color: #F7F8F9;
+            height: 100vh;
+            font-family: 'cursive';
+          }
+
+          button{
+            border-radius: 4px;
+            width: 100%;
+            height: 50%;
+          }
+
+          button.a{background-color: #1aaaf8;}
+          button.b{background-color: #00cbca;}
+          button.c{background-color: #cb0070;}
+          button.d{background-color: #cbba00;}
+
+          #content-container{
+            z-index: 2;
+            position: relative;
+            margin: 0 auto;
+            display: table;
+            padding: 10px;
+            max-width: 940px;
+            height: 100%;
+          }
+          #content-container-center{
+            display: table-cell;
+            text-align: center;
+          }
+          #content-container-center h3{
+            color: #264a60;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+          }
+
+          #choice{
+            transition: all 300ms linear;
+            line-height: 1.3em;
+            display: inline;
+            vertical-align: middle;
+            font-size: 3em;
+          }
+
+          #choice button{
+            display: block;
+            height: 80px;
+            width: 330px;
+            border: none;
+            color: white;
+            font-size:20px;
+            font-weight: 700;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-family: 'system-ui';
+          }
+
+          #choice button.a:hover{background-color: #1488c6;}
+          #choice button.b:hover{background-color: #00a2a1;}
+          #choice button.a:focus{background-color: #1488c6;}
+          #choice button.b:focus{background-color: #00a2a1;}
+          #choice button.c:hover{background-color: #a00058;}
+          #choice button.d:hover{background-color: #9a8d01;}
+          #choice button.c:focus{background-color: #a00058;}
+          #choice button.d:focus{background-color: #9a8d01;}
+    </style>
+</head>
+<body>
+    <div id="content-container"> 
+      <div id="content-container-center"> 
+          <h3>Votez sur votre équipe préférée :</h3>
+          <form id="choice" name='vote' method="POST" action="/">
+            <button id="a" type="submit" name="vote" class="a" value="{{equipe_a}}">{{equipe_a}}</button>
+            <button id="b" type="submit" name="vote" class="b" value="{{equipe_b}}">{{equipe_b}}</button>
+            <button id="c" type="submit" name="vote" class="c" value="{{equipe_c}}">{{equipe_c}}</button>
+            <button id="d" type="submit" name="vote" class="d" value="{{equipe_d}}">{{equipe_d}}</button>
+        </form>
+      </div> 
+    </div>
+</body>
+</html>

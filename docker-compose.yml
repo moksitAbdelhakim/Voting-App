@@ -1,0 +1,64 @@
+version: '3'
+services:
+  vote:
+    image: vote
+    command: ["python", "vote.py"]
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./vote:/app
+    environment:
+      - EQUIPE_A=FC Barcelone
+      - EQUIPE_B=Real Madrid
+      - EQUIPE_C=Liverpool
+      - EQUIPE_D=Manchester United
+    depends_on:
+      - redis
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 50M
+    networks:
+      - front-tier
+
+  resultat:
+    image: resultat
+    command: ["python", "resultat.py"]
+    ports:
+      - '5001:5001'
+    volumes:
+      - ./resultat:/app
+    depends_on:
+      - redis
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 50M
+    networks:
+      - back-tier
+
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 50M
+    networks:
+      - front-tier
+      - back-tier
+      
+
+volumes:
+  redisdata:
+networks:
+  front-tier:
+  back-tier:
+
